@@ -8,8 +8,8 @@ def color_rand():
     color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
     return color
 
-def art():
-    thickness = 1
+def art(path:str):
+    thickness = 5
     points = []
     print("ntfs")
     target = 256
@@ -45,15 +45,16 @@ def art():
             p2 = points[i+1]
 
         line_xy = (p1, p2)
-        thickness += 1 * scale
+        #thickness += 1 * scale
         line_color= (0,0,0)
         overdraw.line(line_xy, fill=color_rand(), width=thickness)
         image = ImageChops.add(image, overimage)
     image.resize((target, target), resample=Image.ANTIALIAS)
-    image.save("test.png")
+    image.save(path)
 
 
 if __name__ == "__main__":
-    art()
+    for i in range(10):
+     art(f"nft-{i}.png")
 
 
